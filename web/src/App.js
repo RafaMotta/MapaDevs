@@ -19,11 +19,12 @@ function App() {//Componente (PRIMEIRA LETRA SEMPRE MAIUSCULA)
               <input name="github_username" id="github_username" required/>
             </div>
             
-            <div className="input-block"></div>
+            <div className="input-block">
               <label htmlFor="techs">Tecnologias</label>
               <input name="techs" id="techs" required/>
             </div>
 
+            
             <label htmlFor="github_username">Usuário do Github</label>
             <input name="github_username" id="github_username" required/>
           </form>
