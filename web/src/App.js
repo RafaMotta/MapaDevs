@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import api from './services/api';
+
 
 import './global.css';
 import './App.css';
@@ -11,6 +13,7 @@ import './Main.css';
 
 
 function App() {//Componente (PRIMEIRA LETRA SEMPRE MAIUSCULA)
+  const [ devs, setDevs ] = useState([]);
   const [ latitude, setLatitude ] = useState('');
   const [ longitude, setLongitude ] = useState('');
   const [ github_username, setGithubUsername ] = useState('');
@@ -33,11 +36,29 @@ function App() {//Componente (PRIMEIRA LETRA SEMPRE MAIUSCULA)
     );
   },[]);
 
+  useEffect(() => {
+    async function loadDevs(){
+      const response = await api.get('/devs');
+
+      setDevs(response.data);
+    }
+    loadDevs();
+  },[]);
+
   async function handleAddDev(e){
     e.preventDefault();
     
+    const response = await api.post('./devs', {
+      github_username,
+      techs,
+      latitude,
+      longitude      
+    });
 
-
+    setGithubUsername('');
+    setTechs('');
+    setLatitude('');
+    setLongitude('');
   }
  
   return (
@@ -98,50 +119,20 @@ function App() {//Componente (PRIMEIRA LETRA SEMPRE MAIUSCULA)
       </aside>
       <main>
         <ul>
-        <li className="dev-item">
-            <header>
-              <img src="https://avatars2.githubusercontent.com/u/34509225?s=460&v=4" alt="Rafael Motta" />
-              <div className="user-info">
-                <strong>Rafael Motta</strong>
-                <span>PHP, javascript, NODEJS</span>
-              </div>
-            </header>
-            <p>Desenvolvedor PHP</p>
-            <a href="https://github.com/RafaMotta">Acessar Perfil Github</a>
-          </li>
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars2.githubusercontent.com/u/34509225?s=460&v=4" alt="Rafael Motta" />
-              <div className="user-info">
-                <strong>Rafael Motta</strong>
-                <span>PHP, javascript, NODEJS</span>
-              </div>
-            </header>
-            <p>Desenvolvedor PHP</p>
-            <a href="https://github.com/RafaMotta">Acessar Perfil Github</a>
-          </li>
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars2.githubusercontent.com/u/34509225?s=460&v=4" alt="Rafael Motta" />
-              <div className="user-info">
-                <strong>Rafael Motta</strong>
-                <span>PHP, javascript, NODEJS</span>
-              </div>
-            </header>
-            <p>Desenvolvedor PHP</p>
-            <a href="https://github.com/RafaMotta">Acessar Perfil Github</a>
-          </li>
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars2.githubusercontent.com/u/34509225?s=460&v=4" alt="Rafael Motta" />
-              <div className="user-info">
-                <strong>Rafael Motta</strong>
-                <span>PHP, javascript, NODEJS</span>
-              </div>
-            </header>
-            <p>Desenvolvedor PHP</p>
-            <a href="https://github.com/RafaMotta">Acessar Perfil Github</a>
-          </li>
+          {devs.map(dev => (
+            <li key={dev._id} className="dev-item">
+              <header>
+                <img src={dev.avatar_url} alt={dev.name} />
+                <div className="user-info">
+                  <strong>{dev.name}</strong>
+                  <span>{dev.techs.join(', ')}</span>
+                </div>
+              </header>
+              <p>{dev.bio}</p>
+              <a href={`https://github.com/${dev.github_username}`}>Acessar Perfil Github</a>
+            </li>   
+          ))}
+              
         </ul>
 
       </main>
