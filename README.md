@@ -32,4 +32,4 @@ Esse projeto se baseia na criação de uma pagina web e um aplicativo(Android/IO
 
 
 
-Fonte: Semana omnistack 10. 
+Fonte do estudo: Semana omnistack 10. 
