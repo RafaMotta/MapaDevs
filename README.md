@@ -32,4 +32,4 @@ Esse projeto se baseia na criação de uma pagina web e um aplicativo(Android/IO
 
 
 
-Conteúdo do projeto criado pela equipe da Rocketseat e desenvolvido na semana omnistack 10. 
+Fonte: Semana omnistack 10. 
