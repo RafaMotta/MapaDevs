@@ -16,7 +16,7 @@ mongoose.connect('mongodb+srv://rafaelmotta:MpQidoT6f98eLLWe@cluster0-pnhxj.mong
     useUnifiedTopology: true
 });
 
-app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(cors());
 app.use(express.json());//precisa vir antes das rotas
 
 app.use(routes);
