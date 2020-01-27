@@ -4,7 +4,9 @@ Se trata de um sistema de cadastro desenvolvido em React/React Native/NodeJS/Mon
 
 Esse projeto se baseia na criação de uma pagina web e um aplicativo(Android/IOS), utilizando o mesmo backend para ambas as plataformas. Também é valido ressaltar que com apenas algumas mudanças no frontend(web), é possivel reaproveitar 99% do codigo no desenvolvimento do aplicativo mobile, resultando assim numa otimização muito alta no tempo de desenvolvimento.
 
+Abaixo você pode ver a execução do sistema de cadastro na web e a esquerda o aplicativo mobile funcionando por websocket em tempo real ao cadastro do usuario...
 
+![](screenshots/github.gif)
 
 
 
